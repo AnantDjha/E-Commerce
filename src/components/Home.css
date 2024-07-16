@@ -1,0 +1,516 @@
+.mainHome{
+    width: 100vw;
+    margin-top: 6.6rem;
+   
+
+}
+
+.imageContent{
+    width: 100%;
+    height:65vh;
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+   /* background-color: black; */
+   /* z-index: -1; */
+   /* display: none; */
+
+
+}
+
+.imageContent::before{
+    content:"";
+    height: 100%;
+    width:100%;
+    background: url(../assets/firstImage1.jpg) no-repeat;
+    background-size:cover;
+    background-position: center;
+    position: absolute;
+    opacity: 1.3;
+    top:0;
+    z-index: -1;
+    
+    
+}
+.firstContainer{
+   height:100%;
+   width: 50%;
+   /* background-color: #fff; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+}
+
+.firstContainer div{
+    color: white;
+}
+
+.firstContainer div h1 {
+    font-size: 3em;
+    color:rgb(0, 234, 255);
+    
+    font-family: "GFS Neohellenic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0.6rem 0;
+}
+
+.firstContainer div h2{
+    font-size: 2.5em;
+    font-family: "GFS Neohellenic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0.6rem 0;
+
+
+
+}
+.firstContainer div p{
+    margin:10px 0;
+    color: rgb(2, 255, 2);
+    
+    font-size: 1.1em;
+    margin: 0.6rem 0;
+
+}
+
+.firstContainer div p b{
+    background-color: black;
+    color: white;
+}
+.firstContainer div button{
+    background-color: white;
+    padding: 0.6em 1.5em;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    /* font-size: 1em; */
+    font-style: bold;
+    margin: 0.6rem 0;
+
+    cursor: pointer;
+}
+.firstContainer div button:hover{
+    /* border-radius: 0.5em; */
+    opacity: 0.8;
+}
+
+.secondSection{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-basis: auto;
+    margin:2rem auto;
+    width: 100%;
+
+
+
+}
+
+.divof2 img{
+    height: 5rem;
+    width:5rem;
+    border-radius: 50%;
+
+
+}
+.divof2{
+    width: 27%;
+    display: flex;
+    align-items: center;
+    padding:2rem;
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 5px 5px 5px gray; */
+    border-radius:1rem;
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.3s;
+    justify-content: space-evenly;
+
+}
+.divof2:hover{
+    transform: scale(1.04);
+    box-shadow: 5px 5px 5px gray;
+
+}
+.outerDiv-divof2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:80%;
+}
+.outerDiv-divof2 p{
+    font-size: 20px;
+   
+}
+
+.mostBuyed{
+    width: 95%;
+    /* height: 20rem; */
+    background-color: #fff;
+    margin: 5rem auto;
+    background-image: url(../assets/MostBuyed.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0.5rem;
+
+
+}
+.mostBuyedSecond{
+    width: 95%;
+    /* height: 20rem; */
+    /* background-color: #fff; */
+    margin: 5rem auto;
+    background-image: url(../assets/mostBuyedSecond.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0.5rem;
+
+}
+.mostBuyed h1{
+    width:100%;
+    color:white;
+    font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 20px;
+  font-style: normal;
+    
+}
+.mostBuyedSecond h1{
+    font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+}
+.mostBuyed p,.mostBuyedSecond p
+{
+    width:100%;
+    margin:0.5rem 0;
+    color:white;
+    font-style: oblique;
+}
+.productView{
+    width: 100%;
+    height: 23rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* overflow-x: scroll; */
+    
+
+
+}
+.firstOfView{
+    /* background-color: #fff; */
+    width: 20%;
+    height: 100%;
+
+}
+.secondOfView{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+        justify-content: center;
+}
+
+.ItemBox{
+    height: 95%;
+    min-width: 22%;
+    /* margin:0 3rem; */
+    /* background-color: white; */
+  background-color: white;
+    margin: 0 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    text-decoration: none;
+    color: black;
+
+}
+.ItemBox:hover{
+    transform: translateY(-10px);
+}
+
+.ItemBox img{
+    height: 60%;
+    width:100%;
+}
+.itemDetail{
+    width: 90%;
+    height: 38%;
+    /* background-color: #fff; */
+}
+.itemDetail p{
+    color:black;
+    font-style: normal;
+    margin: 0.3rem 0;
+    
+}
+.itemDetail h2{
+    font-family: "GFS Neohellenic", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemDetail h2 span{
+    font-weight: lighter;
+    font-size: 13px;
+    padding: 0.2rem 0.7rem;
+    background-color: rgb(220, 215, 215);
+    background-color: #32aeb1;
+    border-radius: 10px;
+    color: white;
+    font-size: 11px;
+    height: fit-content;
+}
+
+.itemDetail p span{
+    color:rgb(255, 137, 2);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:1500px )
+{
+    
+   .secondOfView{
+    width: 90%;
+
+   }
+   .firstOfView{
+    width: 10%;
+   }
+   .ItemBox{
+    width: 17rem;
+    margin:0 0.5rem;
+   }
+}
+
+@media only screen and (max-width:1300px )
+{
+    
+   .secondOfView{
+    width: 100%;
+
+   }
+   .firstOfView{
+    width: 0;
+   }
+   .ItemBox{
+    width: 17rem;
+    height: 20rem;
+    margin:0.5rem 0.5rem;
+   }
+   .ItemBox img{
+    height: 55%;
+
+   }
+   .itemDetail{
+    height: 42%;
+   }
+
+}
+
+
+
+@media only screen and (max-width:1200px )
+{
+    
+    .divof2{
+        width: 25%;
+    }
+    .secondOfView{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .productView{
+        height: fit-content;
+    }
+}
+
+@media only screen and (max-width:1100px)
+{
+    .firstContainer{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:1200px )
+{
+    .divof2{
+        width: 20%;
+        height: 8rem;
+        margin:0 0.6rem;
+        flex-direction: column;
+       
+    }
+    .secondSection{
+        margin:2rem 0;
+    }
+}
+
+@media only screen and (max-width:800px)
+{
+    .outerDiv-divof2 p{
+        display: none;
+    }
+    .outerDiv-divof2 div{
+        width: 100%;
+        /* background-color: blue; */
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:630px)
+{
+  
+    .ItemBox{
+        width: 45%;
+        height:17rem;
+        /* flex-direction: row; */
+        align-items: center;
+        justify-content: space-between;
+        /* margin: 0.6rem 0.6rem; */
+        height: fit-content;
+
+    }
+    .ItemBox img{
+        height:10rem;
+        width:100%
+    }
+    .itemDetail{
+        width: 90%;
+        height: 42%;
+        /* background-color: #fff; */
+        justify-content: center;
+        padding: 0.5rem;
+    }
+    .itemDetail h2{
+        font-size: 13px;
+        flex-direction: column;
+        
+    }
+    .itemDetail h2 span{
+        width: fit-content;
+        margin: 0.4rem 0;
+    }
+    .itemDetail h1{
+        font-size: 17px;
+    }
+    .itemDetail p{
+        margin: 0.3rem 0;
+        font-size: 14px;
+    }
+    .mostBuyed{
+        margin: 3rem 0;
+    }
+    .mostBuyedSecond{
+        margin: 3rem 0;
+    }
+}
+
+@media only screen and (max-width:607px)
+{
+    .firstContainer{
+        width:93%;
+    }
+
+    .firstContainer div h1{
+        font-size: 2em;
+    }
+    .firstContainer div h2{
+        font-size: 1.5em;
+    }
+    .firstContainer div p{
+        font-size: 0.9em;
+    }
+    .firstContainer div span{
+        font-size: 13px;
+    }
+    .mainHome{
+        margin-top: 6.2rem;
+    }
+    .mostBuyedSecond h1{
+        font-size: 16px;
+    }
+    .mostBuyed h1{
+        font-size: 16px;
+    }
+    .mostBuyed p{
+        font-size: 12px;
+    }
+    .mostBuyedSecond p{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:630px)
+{
+    .divof2{
+       width: 20%;
+       height: 10vh;
+       padding:1rem ;
+       font-size: 12px;
+       margin:0;
+       
+       
+    }
+    .imageContent{
+        height: 69vh;
+    }
+    .outerDiv-divof2 div span{
+        width: 100%;
+        /* background-color: blue; */
+        text-align: center;
+        display: none;
+    }
+    .secondSection{
+        margin:2rem 0;
+    }
+    #wellness{
+        width: 4rem;
+        height:4rem;
+    }
+}

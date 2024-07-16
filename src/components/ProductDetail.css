@@ -1,0 +1,229 @@
+.mainDetail{
+    width: 100vw;
+    height: 85vh;
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6.6rem;
+}
+
+.absoluter{
+    position: absolute;
+    top: 7rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+.detailBox{
+    width: 70%;
+    height: 90%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: space-between;
+    /* margin-left: 3rem; */
+    background-color: #fff;
+}
+.image{
+    width: 45%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+}
+.image img{
+    width: 100%;
+    height: 90%;
+}
+.tagHai{
+    font-weight: lighter;
+    font-size: 13px;
+    padding: 0.3rem 0.7rem;
+    background-color: rgb(220, 215, 215);
+    background-color: #32aeb1;
+    border-radius: 10px;
+    color: white;
+    height: fit-content;
+    width: fit-content;
+}
+.text{
+    width: 50%;
+    height: 100%;
+    /* padding: 1rem 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text h2{
+    font-size: 28px;
+    margin: 0.5rem 0;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.text h4{
+    font-weight: 200;
+    font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  margin:0.5rem 0;
+  /* font-size: 14px; */
+  width: 80%;
+}
+.text p{
+    margin: 0.5rem 0;
+}
+.text p b{
+    color:orange
+}
+.text h1{
+    font-size: 26px;
+    margin: 0.5rem 0;
+    background-color: rgba(201, 177, 177,0.2);
+    width: 80%;
+    padding: 0.5rem 0;
+}
+.text h1 span{
+    font-size: 22px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+#discount{
+    color: rgb(17, 218, 17);
+}
+
+.text ul{
+    width: 70%;
+    padding-left: 2rem;
+
+}
+
+.text button{
+    padding: 0.5rem 4rem;
+    background-color: #32aeb1;
+    color: white;
+    border: none;
+    outline: none;
+    margin: 1rem 0;
+    width: 16rem;
+    cursor: pointer;
+}
+.text ul li{
+    /* list-style: none; */
+    margin: 0.5rem 0;
+    font-weight: lighter;
+    font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 14px;
+
+
+}
+.text h3{
+    margin: 1rem 0;
+    /* font-weight: 200; */
+}
+
+@media only screen and (max-width:1150px)
+{
+    .detailBox{
+        width: 90%;
+
+    }
+}
+@media only screen and (max-width:900px)
+{
+    
+    .image{
+        width: 47%;
+    }
+    .text{
+        width: 50%;
+    }
+    .detailBox{
+        height: fit-content;
+    }
+}
+
+@media only screen and (max-width:900px)
+{
+    
+    .text h3{
+        position: relative;
+        left:-80%;
+        width: 80%;
+        /* background-color: red; */
+    }
+    .text ul{
+        position: relative;
+        left:-80%;
+        width: 150%;
+        /* background-color: red; */
+    }
+    .text button{
+        position: relative;
+        left:-80%;
+        /* width: 150%; */
+    }
+}
+@media only screen and (max-width:750px)
+{
+   .detailBox{
+    flex-direction: column;
+    height: fit-content;
+    margin: 0;
+    background-color: transparent;
+    /* align-items: center; */
+   }
+   .image{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+   }
+   .mainDetail{
+    height: fit-content;
+    padding: 1rem 0;
+   }
+   .absoluter{
+    display: none;
+   }
+   .text{
+    width: 100%;
+    /* padding: 0.5rem; */
+   }
+   .text h3{
+    position: static;
+   
+}
+.text ul{
+    position: static;
+    width: 90%;
+   
+}
+.text button{
+    position: static;
+   
+}
+}
+@media only screen and (max-width:500px)
+{
+    .text h2{
+        font-size: 20px;
+    }
+    .text h4{
+        font-size: 12px;
+        width: 90%;
+    }
+    .text ul{
+        width: 80%;
+    }
+    .text ul li{
+        font-size: 12px;
+    }
+    .text button{
+       align-self: center;
+    }
+}
