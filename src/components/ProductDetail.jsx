@@ -40,6 +40,7 @@ export default function ProductDetail() {
     }
 
     const param = useParams();
+    const [paramProduct,setParamProduct] = useState(products.find(a => a.id === parseInt(param.id)))
     const handleAdd = () => {
         const paramId = parseInt(param.id, 10);
         const list = JSON.parse(localStorage.getItem("cartItems") || '[]');
@@ -65,23 +66,23 @@ export default function ProductDetail() {
         ) : (
             <div className="mainDetail">
                 <div className="detailBox">
-                    <h5 className="absoluter">Medify:{">" + products.find(a => a.id === parseInt(param.id)).name +" - " +products.find(a => a.id === parseInt(param.id)).quantity}</h5>
+                    <h5 className="absoluter">Medify:{">" + paramProduct.name +" - " +paramProduct.quantity}</h5>
                     <div className="image">
-                        <LazyLoadImage src={products.find(a => a.id === parseInt(param.id)).url} alt={"loading......"} effect="blur" placeholderSrc={wellnesImg} />
+                        <LazyLoadImage src={paramProduct.url} alt={"loading......"} effect="blur" placeholderSrc={wellnesImg} />
                     </div>
                     <div className="text">
-                        <h2>{products.find(a => a.id === parseInt(param.id)).name} - {products.find(a => a.id === parseInt(param.id)).quantity}</h2>
-                        <span className="tagHai">{products.find(a => a.id === parseInt(param.id)).tag[0]}</span>
-                        <h4>{products.find(a => a.id === parseInt(param.id)).detail}</h4>
+                        <h2>{paramProduct.name} - {paramProduct.quantity}</h2>
+                        <span className="tagHai">{paramProduct.tag[0]}</span>
+                        <h4>{paramProduct.detail}</h4>
 
-                        <p><b>Brand: </b>{products.find(a => a.id === parseInt(param.id)).brand}</p>
+                        <p><b>Brand: </b>{paramProduct.brand}</p>
 
                         <h1>
-                            ₹ {products.find(a => a.id === parseInt(param.id)).price} <span>M.R.P</span>
+                            ₹ {paramProduct.price} <span>M.R.P</span>
                         </h1>
 
-                        <p id="discount"> <i>Get upto </i> {products.find(a => a.id === parseInt(param.id)).discount}</p>
-                        <p>{products.find(a => a.id === parseInt(param.id)).star.map(starP => {
+                        <p id="discount"> <i>Get upto </i> {paramProduct.discount}</p>
+                        <p>{paramProduct.star.map(starP => {
                             if (starP === 1) {
                                 return (
 
@@ -104,7 +105,7 @@ export default function ProductDetail() {
 
                         <h3>About this product</h3>
                         <ul>
-                            {products.find(a => a.id === parseInt(param.id)).about.map(q => {
+                            {paramProduct.about.map(q => {
                                 return <li key={q[0]}> {q}</li>
                             })}
                         </ul>
@@ -119,7 +120,7 @@ export default function ProductDetail() {
                                         addToCart()
                                     }
                             }
-                        }>{isInCart.find(b => b.id === products.find(a => a.id === parseInt(param.id)).id) ? "Go to cart" :"Add to cart"}</button>
+                        }>{isInCart.find(b => b.id === paramProduct.id) ? "Go to cart" :"Add to cart"}</button>
                     </div>
                 </div>
             </div>
