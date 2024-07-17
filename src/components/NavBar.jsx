@@ -72,7 +72,20 @@ export default function NavBar()
                     <Link to = "/orders"><li>My Orders</li></Link>
                 </ul>
                 <div className="login">
-                    <a href="#">{user && (!user.valid ? "Login" : user.value.name)}</a>
+                    <Link to="/login" onClick={()=>{
+                        if(!user.valid)
+                        {
+                            return;
+                        }
+                        axios.defaults.withCredentials = true;
+                        axios.get("http://localhost:5000/logout")
+                        .then((res)=>{
+                            setUser(res.data);
+                        })
+                        .catch((e)=>{
+                            console.log(e);
+                        })
+                    }}>{user && (!user.valid ? "Login" : "Logout")}</Link>
                 </div>
                 </div>
                 

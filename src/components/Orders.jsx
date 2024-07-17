@@ -16,10 +16,16 @@ export default function Orders()
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(!user || !user.valid)
+        if(!user)
         {
-            navigate("/login")
-            return
+            navigate("/home")
+            navigate("/orders")
+            
+        }
+        else if(!user.valid)
+        {
+            navigate("/login");
+            return;
         }
 
         axios.defaults.withCredentials= true;

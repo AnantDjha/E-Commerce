@@ -17,7 +17,7 @@ const schema = mongoose.Schema(
         },
         address:{
             type:[Object],
-            required:true
+        
         }
 
     }

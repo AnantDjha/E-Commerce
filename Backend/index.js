@@ -30,9 +30,14 @@ app.use(session({
 }))
 app.use(bodyParser.json())
 
-const conn = mongoose.connect("mongodb://127.0.0.1:27017/PharmaStore")
+const conn = mongoose.connect("mongodb+srv://anantjha0112:Anant9324831333@clusterofanant.nrldpqa.mongodb.net/?retryWrites=true&w=majority&appName=ClusterOfAnant")
 
-
+// const data = new UserDetail({
+//     name:"Anant Jha",
+//     email:"anantjha0112@gmail.com",
+//     password:"12345678"
+// })
+// data.save()
 app.get("/user", (req, res) => {
     if (req.session.user) {
         res.json({ valid: true, value: req.session.user })
@@ -72,6 +77,17 @@ app.post("/login", async (req, res) => {
     catch (e) {
         console.log(e);
     }
+})
+
+app.get("/logout" ,async (req,res)=>{
+    if(!req.session.user)
+    {
+        res.json({ valid: false })
+        return
+    }
+    req.session.destroy()
+    res.json({ valid: false })
+
 })
 
 app.post("/cart", async (req, res) => {
