@@ -1,6 +1,6 @@
 import "./ProductDetail.css"
 import { useNavigate, useParams } from "react-router-dom"
-import { products } from "./product";
+import { products } from "./product.js";
 import { useContext, useState, useEffect, useRef } from "react";
 import { productContext } from "../context/ProductContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
