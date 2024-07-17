@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import NavBar from './components/NavBar';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
-import Product from './components/Product';
+import Product from "./components/Product"
 import Search from './components/Search';
 import Tags from './components/Tags';
 import ProductDetail from './components/ProductDetail';
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get("http://localhost:5000/user")
+    axios.get("https://backendofmedify.onrender.com/user")
       .then((res) => {
         setUser(res.data);
       })
@@ -37,7 +37,7 @@ function App() {
   
   const router = createBrowserRouter([
     { path: "/", element: <><Home /><Search /><NavBar /></> },
-    { path: "/products/:value", element: <><Tags /><Product /><Search /><NavBar /></> },
+    { path: "/products/:value", element: <><Tags /><Product/><Search /><NavBar /></> },
     { path: "/products", element: <><Tags /><Product /><Search /><NavBar /></> },
     { path: "/productdetail/:id", element: <><ProductDetail value = {{prod, setProd}}/><Search /><NavBar /></> },
     { path:"/cart" , element:<><Cart value={{prod, setProd}}/><Search /><NavBar /></>},

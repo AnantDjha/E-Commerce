@@ -8,7 +8,6 @@ const eachAndEveryProduct = require("./schemas/productSchema.js")
 const UserDetail = require("./schemas/userSchema.js")
 const Cart = require("./schemas/cartSchema.js")
 const Razorpay = require("razorpay")
-const shortid = require("shortid")
 const orders = require("./schemas/ordersSchema.js")
 
 const app = express()
@@ -283,7 +282,7 @@ app.post("/razorpay", async (req, res) => {
         const options = {
             amount: req.body.amount * 100,  // Make sure req.body.amount is defined
             currency: "INR",
-            receipt: shortid.generate(),
+            receipt: "sudhfshdihisdhcugsucsdycgusdcu",
             payment_capture: 1
         };
 
