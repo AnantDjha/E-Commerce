@@ -29,7 +29,7 @@ export default function Orders()
         }
 
         axios.defaults.withCredentials= true;
-        axios.get("https://backendofmedify.onrender.com/getOrders")
+        axios.get("https://medify-vtrr.onrender.com/getOrders")
         .then((response)=>{
             
             setOrderedProduct(response.data);

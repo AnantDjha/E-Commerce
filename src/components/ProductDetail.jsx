@@ -16,7 +16,7 @@ export default function ProductDetail() {
     const navigate = useNavigate();
     const addToCart = () => {
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/cart",{ email: user.value.email, id: parseInt(param.id), quantity: 1 },{
+        axios.post("https://medify-vtrr.onrender.com/cart",{ email: user.value.email, id: parseInt(param.id), quantity: 1 },{
            
             headers: {
                 "Content-Type": "application/json"

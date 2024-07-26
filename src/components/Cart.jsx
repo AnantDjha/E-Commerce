@@ -50,7 +50,7 @@ export default function Cart() {
 
         
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/getCart", { email: user.value.email },
+        axios.post("https://medify-vtrr.onrender.com/getCart", { email: user.value.email },
             {
                 Headers: {
                     "Content-Type": "application/json"
@@ -97,7 +97,7 @@ export default function Cart() {
     const handleIncrease = (itemId)=>{
         if(!user.valid) return
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/increaseQuantity", {email:user.value.email , id:itemId},
+        axios.post("https://medify-vtrr.onrender.com/increaseQuantity", {email:user.value.email , id:itemId},
            { Headers: {
                 "Content-Type": "application/json"
 
@@ -114,7 +114,7 @@ export default function Cart() {
     const handleDecrease = (itemId)=>{
         if(!user.valid) return
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/decreaseQuantity", {email:user.value.email , id:itemId},
+        axios.post("https://medify-vtrr.onrender.com/decreaseQuantity", {email:user.value.email , id:itemId},
            { Headers: {
                 "Content-Type": "application/json"
 
@@ -131,7 +131,7 @@ export default function Cart() {
     const handleRemove = (itemId)=>{
         if(!user.valid) return
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/remove", {email:user.value.email , id:itemId},
+        axios.post("https://medify-vtrr.onrender.com/remove", {email:user.value.email , id:itemId},
            { Headers: {
                 "Content-Type": "application/json"
 

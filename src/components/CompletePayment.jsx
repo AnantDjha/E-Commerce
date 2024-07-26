@@ -31,7 +31,7 @@ function CompletePayment() {
             navigate("/cart");
         }
         axios.defaults.withCredentials = true
-        axios.post("https://backendofmedify.onrender.com/razorpay", {amount:price} ,{
+        axios.post("https://medify-vtrr.onrender.com/razorpay", {amount:price} ,{
             headers:{
                 "Content-Type": "application/json"
             }
@@ -64,7 +64,7 @@ function CompletePayment() {
             "description": "Medicine purchased",
             handler: function (response){
                 axios.defaults.withCredentials = true;
-                axios.post("https://backendofmedify.onrender.com/addPaymentToDB", {order_id:response.razorpay_order_id, 
+                axios.post("https://medify-vtrr.onrender.com/addPaymentToDB", {order_id:response.razorpay_order_id, 
                     payment_id:response.razorpay_payment_id,
                     signature:response.razorpay_signature,
                     amount:information.amount,

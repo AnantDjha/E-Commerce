@@ -30,7 +30,7 @@ export default function Payment() {
         }
 
         axios.defaults.withCredentials = true;
-        axios.get("https://backendofmedify.onrender.com/address")
+        axios.get("https://medify-vtrr.onrender.com/address")
             .then((response) => {
                 console.log(response.data[0].address);
                 setAddress(response.data[0].address);
@@ -53,7 +53,7 @@ export default function Payment() {
 
     const onSubmit = (data) => {
         axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/addAddress", data , {
+        axios.post("https://medify-vtrr.onrender.com/addAddress", data , {
             headers: {
                 "Content-Type": "application/json"
             },

@@ -26,7 +26,7 @@ function App() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get("https://backendofmedify.onrender.com/user")
+    axios.get("https://medify-vtrr.onrender.com/user")
       .then((res) => {
         setUser(res.data);
       })

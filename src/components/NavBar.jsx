@@ -32,7 +32,7 @@ export default function NavBar()
             }
         else
        { axios.defaults.withCredentials = true;
-        axios.post("https://backendofmedify.onrender.com/getCart", { email: user.value.email },
+        axios.post("https://medify-vtrr.onrender.com/getCart", { email: user.value.email },
             {
                 Headers: {
                     "Content-Type": "application/json"
@@ -78,7 +78,7 @@ export default function NavBar()
                             return;
                         }
                         axios.defaults.withCredentials = true;
-                        axios.get("https://backendofmedify.onrender.com/logout")
+                        axios.get("https://medify-vtrr.onrender.com/logout")
                         .then((res)=>{
                             setUser(res.data);
                         })
