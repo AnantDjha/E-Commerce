@@ -12,7 +12,7 @@ const orders = require("./schemas/ordersSchema.js")
 
 const app = express()
 const corsOptaion = {
-    origin: "http://localhost:5173",
+    origin: "https://medify-vtrr.onrender.com",
     credentials: true,
 }
 app.use(cors(corsOptaion))
