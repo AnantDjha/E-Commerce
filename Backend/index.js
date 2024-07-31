@@ -12,14 +12,14 @@ const orders = require("./schemas/ordersSchema.js")
 
 const app = express()
 const corsOptaion = {
-    origin: "https://medify-vtrr.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true,
 }
 app.use(cors(corsOptaion))
 app.use(cookieParser())
 app.use(session({
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     secret: "secret",
 
     cookie: {
