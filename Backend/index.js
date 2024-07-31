@@ -18,12 +18,12 @@ const corsOptaion = {
 app.use(cors(corsOptaion))
 app.use(cookieParser())
 app.use(session({
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     secret: "secret",
 
     cookie: {
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24
     }
 }))
