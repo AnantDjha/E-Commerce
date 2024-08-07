@@ -63,7 +63,7 @@ app.post("/login", async (req, res) => {
         if (value.length > 0) {
             if (value[0].password == req.body.password) {
                 req.session.user = value[0];
-                res.json({ message: "succesfull" })
+                res.json({ message: "succesfull" ,user:{valid:true,value:value[0]}})
             }
             else {
                 res.json({ message: "incorrect password" })
