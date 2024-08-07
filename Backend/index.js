@@ -12,7 +12,7 @@ const orders = require("./schemas/ordersSchema.js")
 
 const app = express()
 const corsOptaion = {
-    origin: "http://localhost:5173",
+    origin: "https://pharma-store-sigma.vercel.app/",
     credentials: true,
 }
 app.use(cors(corsOptaion))
