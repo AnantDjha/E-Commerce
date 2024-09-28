@@ -13,8 +13,9 @@ const { craeteUser, getUser } = require("./auth/auth.js")
 
 const app = express()
 const corsOptaion = {
-    // origin: "https://pharma-store-sigma.vercel.app/",
-    origin:"http://localhost:5173",
+    // origin: "https://pharma-store-sigma.vercel.app",
+    // origin:"http://localhost:5173",
+    origin:"https://medifystore.netlify.app",
     credentials: true,
 }
 app.use(cors(corsOptaion))
