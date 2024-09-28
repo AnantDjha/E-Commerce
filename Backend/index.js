@@ -9,24 +9,26 @@ const UserDetail = require("./schemas/userSchema.js")
 const Cart = require("./schemas/cartSchema.js")
 const Razorpay = require("razorpay")
 const orders = require("./schemas/ordersSchema.js")
+const { craeteUser, getUser } = require("./auth/auth.js")
 
 const app = express()
 const corsOptaion = {
-    origin: "https://pharma-store-sigma.vercel.app/",
+    // origin: "https://pharma-store-sigma.vercel.app/",
+    origin:"http://localhost:5173",
     credentials: true,
 }
 app.use(cors(corsOptaion))
-app.use(cookieParser())
-app.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: "secret",
+// app.use(cookieParser())
+// app.use(session({
+//     resave: false,
+//     saveUninitialized: false,
+//     secret: "secret",
 
-    cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24
-    }
-}))
+//     cookie: {
+//         secure: false,
+//         maxAge: 1000 * 60 * 60 * 24
+//     }
+// }))
 app.use(bodyParser.json())
 
 const conn = mongoose.connect("mongodb+srv://anantjha0112:Anant9324831333@clusterofanant.nrldpqa.mongodb.net/?retryWrites=true&w=majority&appName=ClusterOfAnant")
@@ -38,13 +40,15 @@ const conn = mongoose.connect("mongodb+srv://anantjha0112:Anant9324831333@cluste
 // })
 // data.save()
 app.get("/user", (req, res) => {
-    if (req.session.user) {
-        res.json({ valid: true, value: req.session.user })
+    const token = req.headers["authorization"].split("Bearer ")[1];
+    if (getUser(token)) {
+        res.json({ valid: true, value: getUser(token)  , token:token})
     }
     else {
         res.json({ valid: false })
     }
 })
+
 app.get("/product", async (req, res) => {
     try {
         const data = await eachAndEveryProduct.find({});
@@ -62,8 +66,8 @@ app.post("/login", async (req, res) => {
         const value = await UserDetail.find({ email: req.body.email });
         if (value.length > 0) {
             if (value[0].password == req.body.password) {
-                req.session.user = value[0];
-                res.json({ message: "succesfull" ,user:{valid:true,value:value[0]}})
+                const token = craeteUser(value[0]);
+                res.json({ token , message: "succesfull" ,user:{valid:true,value:value[0]}})
             }
             else {
                 res.json({ message: "incorrect password" })
@@ -78,22 +82,26 @@ app.post("/login", async (req, res) => {
     }
 })
 
-app.get("/logout" ,async (req,res)=>{
-    if(!req.session.user)
-    {
-        res.json({ valid: false })
-        return
-    }
-    req.session.destroy()
-    res.json({ valid: false })
+// app.get("/logout" ,async (req,res)=>{
+//     if(!mainData)
+//     {
+//         res.json({ valid: false })
+//         return
+//     }
+//     req.session.destroy()
+//     res.json({ valid: false })
 
-})
+// })
 
 app.post("/cart", async (req, res) => {
     try {
-        if (!req.session.user) return
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
+           return;
+        }
 
-        const data = await Cart.find({ email: req.body.email });
+        const data = await Cart.find({ email: mainData.email });
         if (data.length > 0) {
             let arr = data[0].cart
             if (arr.find(a => a.id === req.body.id)) {
@@ -131,7 +139,9 @@ app.post("/cart", async (req, res) => {
 
 app.post("/getCart", async (req, res) => {
     try {
-        if (req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (mainData) {
 
             const data = await Cart.find({ email: req.body.email })
 
@@ -153,7 +163,9 @@ app.post("/getCart", async (req, res) => {
 
 app.post("/increaseQuantity", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return res.json({ message: "unsuccessfull" });
         }
         const data = await Cart.find({ email: req.body.email });
@@ -179,7 +191,9 @@ app.post("/increaseQuantity", async (req, res) => {
 
 app.post("/decreaseQuantity", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return res.json({ message: "unsuccesfull" });
         }
 
@@ -205,7 +219,9 @@ app.post("/decreaseQuantity", async (req, res) => {
 
 app.post("/remove", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return res.json({ message: "unsuccesfull" });
         }
 
@@ -232,12 +248,14 @@ app.post("/remove", async (req, res) => {
 
 app.get("/address", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return;
         }
 
-        console.log(req.session.user.email);
-        const data = await UserDetail.find({ email: req.session.user.email });
+        console.log(mainData.email);
+        const data = await UserDetail.find({ email: mainData.email });
 
         res.json(data);
 
@@ -249,14 +267,16 @@ app.get("/address", async (req, res) => {
 
 app.post("/addAddress", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return res.status(401).json({ message: "User not authenticated" });
         }
 
         console.log(req.body);
 
         const data = await UserDetail.updateOne(
-            { email: req.session.user.email },
+            { email: mainData.email },
             {
                 $push: {
                     address: {
@@ -298,11 +318,13 @@ app.post("/razorpay", async (req, res) => {
 
 app.post("/addPaymentToDB", async (req, res) => {
     try {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             return
         }
-        const cartDetail = await Cart.find({ email: req.session.user.email })
-        const orderData = await orders.find({ email: req.session.user.email })
+        const cartDetail = await Cart.find({ email: mainData.email })
+        const orderData = await orders.find({ email: mainData.email })
 
 
         if (orderData.length > 0) {
@@ -310,12 +332,12 @@ app.post("/addPaymentToDB", async (req, res) => {
             let list = orderData[0].orders;
             list.push({ product: cartDetail[0].cart, transaction: req.body, status: "ordered", orderDate: new Date().getDate(), orderMonth: new Date().getMonth() })
 
-            await orders.updateOne({ email: req.session.user.email },
+            await orders.updateOne({ email: mainData.email },
                 { $set: { orders: list } }
             )
 
             // removing item from the cart
-            await Cart.updateOne({ email: req.session.user.email }, {
+            await Cart.updateOne({ email: mainData.email }, {
                 $set: { cart: [] }
             })
             res.json({ message: "ok" })
@@ -323,13 +345,13 @@ app.post("/addPaymentToDB", async (req, res) => {
         else {
             const insert = new orders(
                 {
-                    email: req.session.user.email,
+                    email: mainData.email,
                     orders: [{ product: cartDetail[0].cart, transaction: req.body, status: "ordered", orderDate: new Date().getDate(), orderMonth: new Date().getMonth() }]
 
                 }
             )
             insert.save()
-            await Cart.updateOne({ email: req.session.user.email }, {
+            await Cart.updateOne({ email: mainData.email }, {
                 $set: { cart: [] }
             })
             res.json({ message: "ok" })
@@ -345,12 +367,14 @@ app.post("/addPaymentToDB", async (req, res) => {
 app.get("/getOrders", async (req, res) => {
     try
     {
-        if (!req.session.user) {
+        const token = req.headers["authorization"].split("Bearer ")[1];
+        const mainData = getUser(token)
+        if (!mainData) {
             res.json([]);
             return;
         }
 
-        const data = await orders.find({ email: req.session.user.email })
+        const data = await orders.find({ email: mainData.email })
 
         if (data.length > 0) {
             res.json(data[0].orders)
