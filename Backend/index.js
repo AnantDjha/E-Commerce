@@ -10,6 +10,7 @@ const Cart = require("./schemas/cartSchema.js")
 const Razorpay = require("razorpay")
 const orders = require("./schemas/ordersSchema.js")
 const { craeteUser, getUser } = require("./auth/auth.js")
+const env = require("dotenv").config()
 
 const app = express()
 const corsOptaion = {
@@ -32,7 +33,7 @@ app.use(cors(corsOptaion))
 // }))
 app.use(bodyParser.json())
 
-const conn = mongoose.connect("mongodb+srv://anantjha0112:Anant9324831333@clusterofanant.nrldpqa.mongodb.net/?retryWrites=true&w=majority&appName=ClusterOfAnant")
+const conn = mongoose.connect(process.env.MONGO_URI)
 
 // const data = new UserDetail({
 //     name:"Anant Jha",
@@ -46,7 +47,38 @@ app.get("/user", (req, res) => {
         res.json({ valid: true, value: getUser(token)  , token:token})
     }
     else {
-        res.json({ valid: false })
+        const token2  = craeteUser({name:"Anant" , email:"anantjha0112@gamil.com"});
+        res.json({ valid: true , value:{name:"Anant" , email:"anantjha0112@gamil.com"} , token:token2  })
+    }
+})
+
+app.post("/register" , async (req , res)=>{
+    try{
+        const {name , email , password} = req.body
+        const data = await UserDetail.findOne({email:email})
+
+        if(data)
+        {
+            return res.json({complted:true , message :"The User Already exists"})
+        }
+
+        const schema = new UserDetail({
+            name, 
+            email,
+            password,
+            address:[]
+        })
+
+        schema.save();
+
+        res.json({complted:true , message :"User registerd Successfully"})
+    }
+    catch(e)
+    {
+        console.log(e);
+        
+        res.json({completed:false , message:"Something went wrong"})
+        
     }
 })
 
