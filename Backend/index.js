@@ -34,6 +34,13 @@ app.use(cors(corsOptaion))
 app.use(bodyParser.json())
 
 const conn = mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
+    console.log("Connected to DB")
+})
+.catch((e)=>{
+    console.log("could not connect to DB");
+    
+})
 
 // const data = new UserDetail({
 //     name:"Anant Jha",
@@ -47,8 +54,8 @@ app.get("/user", (req, res) => {
         res.json({ valid: true, value: getUser(token)  , token:token})
     }
     else {
-        const token2  = craeteUser({name:"Anant" , email:"anantjha0112@gamil.com"});
-        res.json({ valid: true , value:{name:"Anant" , email:"anantjha0112@gamil.com"} , token:token2  })
+        const token2  = craeteUser({name:"Anant" , email:"anantjha0112@gmail.com"});        
+        res.json({ valid: true , value:{name:"Anant" , email:"anantjha0112@gmail.com"} , token:token2  })
     }
 })
 
@@ -284,7 +291,7 @@ app.get("/address", async (req, res) => {
         const token = req.headers["authorization"].split("Bearer ")[1];
         const mainData = getUser(token)
         if (!mainData) {
-            return;
+            return ;
         }
 
         console.log(mainData.email);
